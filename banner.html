@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Установка Pegakmop Banner | Entware</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            color: #e2e8f0;
+        }
+
+        .install-card {
+            max-width: 720px;
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -12px #00000080;
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+        }
+
+        .badge {
+            background: #0284c7;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 40px;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            padding-left: 12px;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .command-panel {
+            background: #0b1120;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #334155;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .code-header span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #7dd3fc;
+        }
+
+        .copy-btn {
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s;
+        }
+
+        .copy-btn:hover {
+            background: #0ea5e9;
+            border-color: #38bdf8;
+        }
+
+        .copy-btn.copied {
+            background: #059669;
+            border-color: #34d399;
+        }
+
+        .code-block {
+            background: #020617;
+            padding: 18px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #a5f3fc;
+            border: 1px solid #1e293b;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .code-block span {
+            display: block;
+        }
+
+        .action-area {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: #0284c7;
+            border: none;
+            border-radius: 40px;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #38bdf8;
+            transition: 0.15s;
+        }
+
+        .primary-btn:hover {
+            background: #0369a1;
+        }
+
+        #feedbackMsg {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .info-box {
+            background: #0f172a;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-top: 20px;
+            border-left: 4px solid #f97316;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            font-size: 0.9rem;
+        }
+
+        .info-box code {
+            background: #1e293b;
+            padding: 2px 8px;
+            border-radius: 20px;
+            color: #fcd34d;
+        }
+
+        .footnote {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        @media (max-width: 500px) {
+            .install-card { padding: 18px; }
+            h1 { font-size: 1.5rem; }
+            .code-block { font-size: 0.9rem; padding: 14px; }
+            .primary-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="install-card">
+    <h1>
+        ⚡ pegakmop-banner
+        <span class="badge">entware</span>
+    </h1>
+    <div class="subhead">
+        Скачать · chmod · запустить — одной командой
+    </div>
+
+    <div class="command-panel">
+        <div class="code-header">
+            <span>📟 КОМАНДА ДЛЯ УСТАНОВКИ</span>
+            <button class="copy-btn" id="copyCommandBtn">
+                📋 Копировать
+            </button>
+        </div>
+        <div class="code-block" id="commandBlock">wget -O /opt/tmp/install-pegakmop-banner.sh https://raw.githubusercontent.com/onucb/entware/refs/heads/main/install-pegakmop-banner.sh
+chmod +x /opt/tmp/install-pegakmop-banner.sh
+sh /opt/tmp/install-pegakmop-banner.sh</div>
+    </div>
+
+    <div class="action-area">
+        <button class="primary-btn" id="mainCopyBtn">
+            📎 Скопировать команду
+        </button>
+        <span id="feedbackMsg"></span>
+    </div>
+
+    <div class="info-box">
+        <div>🚀</div>
+        <div>
+            <strong>Что делает:</strong> скачивает <code>install-pegakmop-banner.sh</code> в <code>/opt/tmp/</code>, даёт права и запускает установку баннера.
+        </div>
+    </div>
+
+    <div class="footnote">
+        <div>🔧 entware scripts by pegakmop</div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const COMMAND = "wget -O /opt/tmp/install-pegakmop-banner.sh https://raw.githubusercontent.com/onucb/entware/refs/heads/main/install-pegakmop-banner.sh\nchmod +x /opt/tmp/install-pegakmop-banner.sh\nsh /opt/tmp/install-pegakmop-banner.sh";
+
+        const copyBtn = document.getElementById('copyCommandBtn');
+        const mainBtn = document.getElementById('mainCopyBtn');
+        const feedback = document.getElementById('feedbackMsg');
+        const codeBlock = document.getElementById('commandBlock');
+
+        async function copyCommand() {
+            try {
+                await navigator.clipboard.writeText(COMMAND);
+                feedback.textContent = '✅ Скопировано!';
+                feedback.style.color = '#34d399';
+                [copyBtn, mainBtn].forEach(b => b?.classList.add('copied'));
+                setTimeout(() => {
+                    feedback.textContent = '';
+                    [copyBtn, mainBtn].forEach(b => b?.classList.remove('copied'));
+                }, 2000);
+            } catch (e) {
+                const ta = document.createElement('textarea');
+                ta.value = COMMAND;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                feedback.textContent = '📋 Скопировано';
+                setTimeout(() => feedback.textContent = '', 2000);
+            }
+        }
+
+        copyBtn.addEventListener('click', copyCommand);
+        mainBtn.addEventListener('click', copyCommand);
+
+        codeBlock.addEventListener('click', () => {
+            const range = document.createRange();
+            range.selectNodeContents(codeBlock);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            feedback.textContent = '📝 Выделено — Ctrl+C';
+            feedback.style.color = '#94a3b8';
+            setTimeout(() => feedback.textContent = '', 1500);
+        });
+    })();
+</script>
+</body>
+</html>
